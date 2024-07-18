@@ -40,11 +40,32 @@ window.addEventListener("dblclick", () => {
 });
 
 /* Textures */
-const image = new Image();
-const texture = new THREE.Texture(image);
-texture.colorSpace = THREE.SRGBColorSpace;
-image.onload = () => (texture.needsUpdate = true);
-image.src = "/door.jpg";
+// const image = new Image();
+// const texture = new THREE.Texture(image);
+// texture.colorSpace = THREE.SRGBColorSpace;
+// image.onload = () => (texture.needsUpdate = true);
+// image.src = "/door.jpg";
+
+const loadingManager = new THREE.LoadingManager();
+loadingManager.onStart = () => console.log("start");
+loadingManager.onLoad = () => console.log("load");
+loadingManager.onProgress = () => console.log("progress");
+loadingManager.onError = () => console.log("error");
+const textureLoader = new THREE.TextureLoader(loadingManager);
+const doorTexture = textureLoader.load("/door.jpg");
+doorTexture.colorSpace = THREE.SRGBColorSpace; //for latest version of THREE.js
+const alphaTexture = textureLoader.load("/textures/door/alpha.jpg");
+alphaTexture.colorSpace = THREE.SRGBColorSpace;
+const heightTexture = textureLoader.load("/textures/door/height.jpg");
+heightTexture.colorSpace = THREE.SRGBColorSpace;
+const metalnessTexture = textureLoader.load("/textures/door/metalness.jpg");
+metalnessTexture.colorSpace = THREE.SRGBColorSpace;
+const normalTexture = textureLoader.load("/textures/door/normal.jpg");
+normalTexture.colorSpace = THREE.SRGBColorSpace;
+const roughnessTexture = textureLoader.load("/textures/door/roughness.jpg");
+roughnessTexture.colorSpace = THREE.SRGBColorSpace;
+
+const texture = roughnessTexture;
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
