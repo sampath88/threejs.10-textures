@@ -47,7 +47,7 @@ window.addEventListener("dblclick", () => {
 // image.src = "/door.jpg";
 
 const textureLoader = new THREE.TextureLoader();
-const doorTexture = textureLoader.load("/door.jpg");
+const doorTexture = textureLoader.load("/textures/checkerboard-8x8.png");
 doorTexture.colorSpace = THREE.SRGBColorSpace; //for latest version of THREE.js
 
 const texture = doorTexture;
@@ -59,9 +59,12 @@ const texture = doorTexture;
 // texture.wrapT = THREE.MirroredRepeatWrapping;
 // texture.offset.x = 0.5;
 // texture.offset.y = 0.5;
-texture.rotation = Math.PI / 4; //in radians
-texture.center.x = 0.5;
-texture.center.y = 0.5
+// texture.rotation = Math.PI / 4; //in radians
+// texture.center.x = 0.5;
+// texture.center.y = 0.5;
+
+texture.minFilter = THREE.NearestFilter;
+texture.magFilter = THREE.NearestFilter;
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
