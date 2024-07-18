@@ -50,8 +50,11 @@ const textureLoader = new THREE.TextureLoader();
 const doorTexture = textureLoader.load("/door.jpg");
 doorTexture.colorSpace = THREE.SRGBColorSpace; //for latest version of THREE.js
 
-
 const texture = doorTexture;
+texture.repeat.x = 4;
+texture.repeat.y = 4;
+texture.wrapS = THREE.RepeatWrapping;
+texture.wrapT = THREE.RepeatWrapping;
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
