@@ -51,15 +51,17 @@ const doorTexture = textureLoader.load("/door.jpg");
 doorTexture.colorSpace = THREE.SRGBColorSpace; //for latest version of THREE.js
 
 const texture = doorTexture;
-texture.repeat.x = 2;
-texture.repeat.y = 2;
+// texture.repeat.x = 2;
+// texture.repeat.y = 2;
 // texture.wrapS = THREE.RepeatWrapping;
 // texture.wrapT = THREE.RepeatWrapping;
-texture.wrapS = THREE.MirroredRepeatWrapping;
-texture.wrapT = THREE.MirroredRepeatWrapping;
-texture.offset.x = 0.5;
-texture.offset.y = 0.5;
-texture.rotation = 1;
+// texture.wrapS = THREE.MirroredRepeatWrapping;
+// texture.wrapT = THREE.MirroredRepeatWrapping;
+// texture.offset.x = 0.5;
+// texture.offset.y = 0.5;
+texture.rotation = Math.PI / 4; //in radians
+texture.center.x = 0.5;
+texture.center.y = 0.5
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
