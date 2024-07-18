@@ -46,26 +46,12 @@ window.addEventListener("dblclick", () => {
 // image.onload = () => (texture.needsUpdate = true);
 // image.src = "/door.jpg";
 
-const loadingManager = new THREE.LoadingManager();
-loadingManager.onStart = () => console.log("start");
-loadingManager.onLoad = () => console.log("load");
-loadingManager.onProgress = () => console.log("progress");
-loadingManager.onError = () => console.log("error");
-const textureLoader = new THREE.TextureLoader(loadingManager);
+const textureLoader = new THREE.TextureLoader();
 const doorTexture = textureLoader.load("/door.jpg");
 doorTexture.colorSpace = THREE.SRGBColorSpace; //for latest version of THREE.js
-const alphaTexture = textureLoader.load("/textures/door/alpha.jpg");
-alphaTexture.colorSpace = THREE.SRGBColorSpace;
-const heightTexture = textureLoader.load("/textures/door/height.jpg");
-heightTexture.colorSpace = THREE.SRGBColorSpace;
-const metalnessTexture = textureLoader.load("/textures/door/metalness.jpg");
-metalnessTexture.colorSpace = THREE.SRGBColorSpace;
-const normalTexture = textureLoader.load("/textures/door/normal.jpg");
-normalTexture.colorSpace = THREE.SRGBColorSpace;
-const roughnessTexture = textureLoader.load("/textures/door/roughness.jpg");
-roughnessTexture.colorSpace = THREE.SRGBColorSpace;
 
-const texture = roughnessTexture;
+
+const texture = doorTexture;
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
@@ -77,6 +63,9 @@ const scene = new THREE.Scene();
  * Object
  */
 const geometry = new THREE.BoxGeometry(1, 1, 1);
+// const geometry = new THREE.TorusGeometry(1, 0.35, 32, 100);
+// const geometry = new THREE.SphereGeometry(1, 32,32);
+// const geometry = new THREE.ConeGeometry(1, 1,32);
 const material = new THREE.MeshBasicMaterial({
   map: texture,
   // color: 0xff0000,
