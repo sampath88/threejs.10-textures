@@ -47,7 +47,7 @@ window.addEventListener("dblclick", () => {
 // image.src = "/door.jpg";
 
 const textureLoader = new THREE.TextureLoader();
-const doorTexture = textureLoader.load("/textures/checkerboard-8x8.png");
+const doorTexture = textureLoader.load("/textures/minecraft.png");
 doorTexture.colorSpace = THREE.SRGBColorSpace; //for latest version of THREE.js
 
 const texture = doorTexture;
@@ -63,6 +63,7 @@ const texture = doorTexture;
 // texture.center.x = 0.5;
 // texture.center.y = 0.5;
 
+texture.generateMipmaps = false;
 texture.minFilter = THREE.NearestFilter;
 texture.magFilter = THREE.NearestFilter;
 
